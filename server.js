@@ -1,22 +1,36 @@
-// Import the HTTP module
 const http = require('http');
 
-// Define the port you want to run the server on
-const port = 4000;
+let port = 5000;
 
-// Create an HTTP server
-const server = http.createServer((req, res) => {
-  // Set the response header
-  res.setHeader('Content-Type', 'text/plain');
+const server = http.createServer((req,res)=>{
+   
+if(req.url === '/home'){
+    res.setHeader('Content-Type','text/html')
+    res.write('<html>')
+    res.write('<header><title>Home page</title></header>')
+    res.write('<body><h1>Hello User Welcom to our website</h1></body>')
+    res.write('</html>')
+  
+    res.end()
+  }else if(req.url === '/about'){
+    res.setHeader('Content-Type','text/html')
+    res.write('<html>')
+    res.write('<header><title>about page</title></header>')
+    res.write('<body><h1>Hello User Welcom to our about page</h1></body>')
+    res.write('</html>')
+  
+    res.end()
+  }else if(req.url === '/node'){
+    res.setHeader('Content-Type','text/html')
+    res.write('<html>')
+    res.write('<header><title>node page</title></header>')
+    res.write('<body><h1>Hello User Welcom to our nodejs website</h1></body>')
+    res.write('</html>')
+  
+    res.end()
+  }
+})
 
-  // Log your name to the console
-  console.log('Your Name: John Doe');
-
-  // Send a response to the browser
-  res.end('Your Name: John Doe\n');
-});
-
-// Start the server and listen on the specified port
-server.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+server.listen(port,()=>{
+    console.log(`Server is running on http://localhost:${port}`);
+})
